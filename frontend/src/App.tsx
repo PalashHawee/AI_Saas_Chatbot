@@ -11,15 +11,16 @@ function App() {
 
   return (
     <main>
+      
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
+       <Routes>
+         <Route path="/" element={<Home />} /> 
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/chat" element={<Chat />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/chat" element={<Chat />} /> 
+        <Route path="*" element={<NotFound />} /> 
         
-      </Routes>
+      </Routes> 
     </main>
   )
 }
