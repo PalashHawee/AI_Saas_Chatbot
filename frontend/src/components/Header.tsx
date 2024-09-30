@@ -5,21 +5,15 @@ import Logo from "./shared/Logo";
 import { useAuth } from "../context/AuthContext";
 import NavigationLink from "./shared/NavigationLink";
 
-
 const Header = () => {
-  const auth=useAuth()
-  
+  const auth = useAuth();
   return (
     <AppBar
-    sx={{bgcolor:"transparent",
-        position:"static",
-        boxShadow:"none",
-        
-    }}
+      sx={{ bgcolor: "transparent", position: "static", boxShadow: "none" }}
     >
-        <Toolbar sx={{display:"flex"}}>
-            <Logo />
-            <div>
+      <Toolbar sx={{ display: "flex" }}>
+        <Logo />
+        <div>
           {auth?.isLoggedIn ? (
             <>
               <NavigationLink
@@ -53,8 +47,7 @@ const Header = () => {
             </>
           )}
         </div>
-        </Toolbar>
-
+      </Toolbar>
     </AppBar>
   );
 };

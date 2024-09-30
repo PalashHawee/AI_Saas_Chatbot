@@ -14,16 +14,18 @@ export const validate = (validations) => {
         return res.status(422).json({ errors: errors.array() });
     };
 };
-//login validations
 export const loginValidator = [
-    body("email").trim().isEmail().withMessage("Please enter a valid email"),
-    body("password").trim().isLength({ min: 6 }).withMessage("Password must be at least 6 characters long")
+    body("email").trim().isEmail().withMessage("Email is required"),
+    body("password")
+        .trim()
+        .isLength({ min: 6 })
+        .withMessage("Password should contain atleast 6 characters"),
 ];
 export const signupValidator = [
     body("name").notEmpty().withMessage("Name is required"),
-    ...loginValidator
+    ...loginValidator,
 ];
 export const chatCompletionValidator = [
-    body("message").notEmpty().withMessage("Message is required")
+    body("message").notEmpty().withMessage("Message  is required"),
 ];
 //# sourceMappingURL=validators.js.map

@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import User from "../models/User.js";
 import { configureOpenAI } from "../config/openai-config.js";
-import OpenAIApi from 'openai'
-import {  ChatCompletionRequestMessage } from "openai";
+import { OpenAIApi, ChatCompletionRequestMessage } from "openai";
 export const generateChatCompletion = async (
   req: Request,
   res: Response,
@@ -16,10 +15,10 @@ export const generateChatCompletion = async (
         .status(401)
         .json({ message: "User not registered OR Token malfunctioned" });
     // grab chats of user
-    const chats:ChatCompletionRequestMessage[] = user.chats.map(({ role, content }) => ({
+    const chats = user.chats.map(({ role, content }) => ({
       role,
       content,
-    }));
+    })) as ChatCompletionRequestMessage[];
     chats.push({ content: message, role: "user" });
     user.chats.push({ content: message, role: "user" });
 
